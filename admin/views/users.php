@@ -75,8 +75,10 @@
                                 <?php
                                 if($item->getActive() == 1) {
                                     echo "Đã kích hoạt";
-                                }else{
+                                }else if($item->getActive() == 0){
                                     echo "Chưa kích hoạt";
+                                }else{
+                                    echo "Đã bị khóa";
                                 }
                                 ?>
                             </td>

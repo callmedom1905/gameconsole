@@ -75,12 +75,12 @@
                     if($user->getRole() == 0){
                         echo '
                         <option selected value="0">Người dùng</option>
-                        <option value="1">Quản trị</option>
+                        <option value="1">Quản trị viên</option>
                         ';
                     }else {
                         echo '
                         <option  value="0">Người dùng</option>
-                        <option selected value="1">Quản trị</option>
+                        <option selected value="1">Quản trị viên</option>
                         ';
                     }
                     ?>

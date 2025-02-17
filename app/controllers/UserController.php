@@ -13,26 +13,56 @@ class UserController
         if(!isset($_POST['password']) || empty($_POST['password'])){
             $errors[] = "Mật khẩu không được để trống.";
         }
+      
+
         if (!empty($errors)) {
             echo "<script>alert('" . implode("\\n", $errors) . "'); window.location.href='/gameconsole/signIn';</script>";
             exit();
         }
-        foreach($user->getAllUsers() as $item){
-            if($item->getEmail() == $_POST['email'] && $item->getPassword() == $_POST['password'] && $item->getRole() == 1){
-                // header("Location: /gameconsole/admin");
-                echo "<script>alert('Chào mừng bạn đến với trang quản trị'); window.location.href='/gameconsole/admin';</script>";
-                exit();
-            }else if($item->getEmail() == $_POST['email'] && $item->getPassword() == $_POST['password'] && $item->getRole() == 0){
-                $_SESSION['user'] = $item->getEmail();
-                // header("Location: /gameconsole/");
-                echo "<script>alert('Chào mừng bạn đến với Gameconsole'); window.location.href='/gameconsole/';</script>";
-            }else{
-                $errors[] = "Tài khoản hoặc mật khẩu không chính xác.";
-            }
+
+        // foreach($user->getAllUsers() as $item){
+        //     if($item->getEmail() == $_POST['email'] && $item->getPassword() == $_POST['password'] && $item->getRole() == 1){
+        //         // header("Location: /gameconsole/admin");
+        //         echo "<script>alert('Chào mừng bạn đến với trang quản trị'); window.location.href='/gameconsole/admin';</script>";
+        //         exit();
+        //     }else if($item->getEmail() == $_POST['email'] && $item->getPassword() == $_POST['password'] && $item->getRole() == 0){
+        //         $_SESSION['user'] = $item->getEmail();
+        //         // header("Location: /gameconsole/");
+        //         echo "<script>alert('Chào mừng bạn đến với Gameconsole'); window.location.href='/gameconsole/';</script>";
+        //     }else{
+        //         $errors[] = "Tài khoản hoặc mật khẩu không chính xác.";
+        //     }
+        // }
+        $check = $user->getUserByEmail($_POST['email']);
+
+        if (!$check) {
+            echo "<script>alert('Tài khoản không tồn tại.'); window.location.href='/gameconsole/signIn';</script>";
+            exit();
         }
-        // Nếu có lỗi, hiển thị alert và chuyển hướng
-        if (!empty($errors)) {
-            echo "<script>alert('" . implode("\\n", $errors,) . "'); window.location.href='/gameconsole/signIn';</script>";
+    
+        // Kiểm tra trạng thái tài khoản
+        if ($check->getActive() == 0) {
+            echo "<script>alert('Tài khoản chưa được kích hoạt.'); window.location.href='/gameconsole/signIn';</script>";
+            exit();
+        }
+        if ($check->getActive() == 2) {
+            echo "<script>alert('Tài khoản của bạn đã bị khoá.'); window.location.href='/gameconsole/signIn';</script>";
+            exit();
+        }
+    
+        // Kiểm tra mật khẩu
+        if ($check->getPassword() !== $_POST['password']) {
+            echo "<script>alert('Tài khoản hoặc mật khẩu không chính xác.'); window.location.href='/gameconsole/signIn';</script>";
+            exit();
+        }
+    
+        // Đăng nhập thành công, kiểm tra quyền
+        if ($check->getRole() == 1) {
+            echo "<script>alert('Chào mừng bạn đến với trang quản trị'); window.location.href='/gameconsole/admin';</script>";
+            exit();
+        } else {
+            $_SESSION['user'] = $check->getEmail();
+            echo "<script>alert('Chào mừng bạn đến với Gameconsole'); window.location.href='/gameconsole/';</script>";
             exit();
         }
     }
