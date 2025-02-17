@@ -35,12 +35,11 @@ class CategoriesModel extends Connect{
 
     public function insert(){
         try {
-            $sql = "INSERT INTO Categories (type ,name, status, url) VALUES ($this->type, '$this->name', $this->status, '$this->url')";
+            $sql = "INSERT INTO Categories (name,status,type,url) VALUES (?, ?, ?, ?)";
             $param = [$this->name, $this->status, $this->type, $this->url];
-            // $resutl = $this->exec($sql, $param);
             var_dump($sql);
-
-            // return $resutl;
+            $result = $this->exec($sql, $param);
+            return $result;
         } catch (Exception $e) {
             return $e->getMessage();
         }

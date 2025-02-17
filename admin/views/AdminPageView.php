@@ -8,6 +8,9 @@ class AdminPageView{
         include 'products.php';
     }
     public function addProduct(){
+        $categories = new CategoriesModel();
+        $categories = $categories->getAllCategories();
+
         include 'productAdd.php';
     }
     public function viewEditPro($product){

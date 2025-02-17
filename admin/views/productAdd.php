@@ -68,8 +68,8 @@
 
                 </div>
 
-                <label for="">Tình trạng</label>
                 <select class="form-select mb-3" name="condition" aria-label="Default select example">
+                    <option value="">Chọn tình trạng</option>
                     <option value="new 100%">new 100%</option>
                     <option value="like new 99%">like new 99%</option>
                     <option value="like new">like new</option>
@@ -77,8 +77,8 @@
 
                 <input class="form-control mb-3" type="text" name="quantity" placeholder="Số lượng" aria-label="default input example">
 
-                <label for="">Trạng thái</label>
                 <select class="form-select mb-3" name="status" aria-label="Default select example">
+                    <option value="">Chọn trạng thái</option>
                     <option value="1">Hoạt động</option>
                     <option value="2">Tạm ngưng</option>
                     <option value="3">Huỷ</option>
@@ -87,9 +87,15 @@
                 <!-- đổ danh mục từ db -->
                 <label for="">Danh mục</label>
                 <select class="form-select mb-3" name="idCategory" aria-label="Default select example">
-                    <option value="1">Dữ liệu từ db</option>
+                    <option value="">Chọn danh mục</option>
+                    <?php 
+                    foreach ($categories as $category) {
+                        echo "<option value='".$category->getId()."'>".$category->getName()."</option>";
+                    }
+                    ?>
                    
                 </select>
+
                 <button type="submit" class="btn btn-success m-2">Thêm sản phẩm</button>
 
             </form>

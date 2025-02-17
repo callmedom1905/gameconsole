@@ -54,6 +54,7 @@
 
                 <label for="">Trạng thái</label>
                 <select class="form-select mb-3" name="status" aria-label="Default select example">
+                    <option value="">Chọn trạng thái</option>
                     <option value="1">Hoạt động</option>
                     <option value="2">Tạm ngưng</option>
                     <option value="3">Huỷ</option>
@@ -61,6 +62,7 @@
 
                 <label for="">Kiểu</label>
                 <select class="form-select mb-3" name="type" aria-label="Default select example">
+                    <option value="">Chọn kiểu</option>
                     <option value="0">Nitendo</option>
                     <option value="1">PlayStation</option>
                 </select>
