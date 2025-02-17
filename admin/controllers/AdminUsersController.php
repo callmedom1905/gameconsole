@@ -21,4 +21,19 @@ class AdminUsersController{
         $pageView = new AdminPageView();
         $pageView->viewEditUser($user);
     }
+
+    public function edit($id){
+        $user = new UsersModel();
+        $user->setRole($_POST['role']);
+        $user->setActive($_POST['active']);
+        // echo $_POST['role'];
+        // echo $_POST['active'];
+        $result = $user->update($id);
+        if($result){
+            echo "<script>alert('Cập nhật thành công!'); window.location.href='/gameconsole/admin/users';</script>";
+        }else{
+            echo "<script>alert('Cập nhật thất bại!'); window.location.href='/gameconsole/admin/edit-user/".$id."';</script>";
+        }
+        
+    }
 }

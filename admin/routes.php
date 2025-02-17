@@ -56,6 +56,10 @@ return [
         'controller'=>'AdminUsersController',
         'method'=>'viewEdit',
     ],
+    'action-edit-user/:id'=>[
+        'controller'=>'AdminUsersController',
+        'method'=>'edit',
+    ],
     'logout'=>[
         'controller'=>'AdminUsersController',
         'method'=>'logout',

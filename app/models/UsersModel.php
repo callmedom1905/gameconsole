@@ -59,6 +59,20 @@ class UsersModel extends Connect{
         }
     }
 
+    public function update($id){
+        try{
+            $sql = "UPDATE Users SET role = ?, active = ? WHERE idUser = $id";
+            $param = [$this->role, $this->active];
+            $result = $this->exec($sql, $param);
+            if($result){
+                return true;
+            }
+        }catch(Exception $e){
+            error_log("Lỗi khi cập nhật dữ liệu: ". $e->getMessage());
+            return false;
+        }
+    }
+
 
 
     public function getId(){

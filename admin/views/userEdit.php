@@ -65,12 +65,12 @@
 <div class="col-12">
     <div class="bg-light rounded h-100 p-4">
         <h6 class="mb-4">Sửa người dùng</h6>
-        <a class="btn btn-secondary rounded-pill m-2" href="/gameconsole/admin/categories">Trở lại</a>
-            <form action="" method="post" enctype="multipart/form-data">  
+        <a class="btn btn-secondary rounded-pill m-2" href="/gameconsole/admin/users">Trở lại</a>
+            <form action="/gameconsole/admin/action-edit-user/<?=$user->getId()?>" method="post" enctype="multipart/form-data">  
 
-                <input class="form-control mb-3" type="text" name="name" placeholder="<?=$user->getEmail()?>" aria-label="default input example" readonly>
+                <input class="form-control mb-3" type="text" name="email" placeholder="<?=$user->getEmail()?>" aria-label="default input example" readonly>
 
-                <select class="form-select mb-3" name="status" aria-label="Default select example">
+                <select class="form-select mb-3" name="role" aria-label="Default select example">
                     <?php
                     if($user->getRole() == 0){
                         echo '
@@ -87,7 +87,7 @@
                     
                 </select>
 
-                <select class="form-select mb-3" name="type" aria-label="Default select example">
+                <select class="form-select mb-3" name="active" aria-label="Default select example">
                     <?php
                     if($user->getActive() == 0){
                         echo '
