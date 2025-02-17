@@ -20,27 +20,29 @@ class AdminProductsController
 
     //action add product 
     // public function add(){
-    //     $product =  new ProductsModel();
+    //     $products =  new ProductsModel();
     //     $data = [
-    //         'name'=>'setName',
-    //         'price'=>'setPrice',
-    //         'salePrice'=>'setSalePrice',
-    //         'discription'=>'setDiscription',
-    //         'image'=>'setImage',
-    //         'listImages'=>'setListImages',
-    //         'condition'=>'setCondition',
-    //         'quantity'=>'setQuantity',
-    //         'status'=>'setStatus',
-    //         'idCategory'=>'setIdCategory',
+    //         'name'=> 'setName',
+    //         'price'=> 'setPrice',
+    //         'salePrice'=> 'setSalePrice',
+    //         'discription'=> 'setDiscription',
+    //         'image'=> 'setImage',
+    //         'listImages'=> 'setListImages',
+    //         'condition'=> 'setCondition',
+    //         'quantity'=> 'setQuantity',
+    //         'status'=> 'setStatus',
+    //         'idCategory'=> 'setIdCategory',
     //     ];
-    //     // print_r($data); 
     //     foreach($data as $key => $value){
-    //         if(isset($_POST[$key]) && !empty($_POST[$key])){
-    //             $product->$value($_POST[$key]);
-    //         }
+    //         $products->$value($_POST[$key]);
     //     }
-    //     // print_r($product);
-    //     $product->insert();
+    //     if($products->insert()){
+    //         echo "<script>alert('Thêm sản phẩm thành công!'); window.location.href='/gameconsole/admin/products';</script>";
+    //     }else{
+    //         // echo "<script>alert('Thêm sản phẩm thất bại!'); window.location.href='/gameconsole/admin/add-product';</script>";
+    //         echo "L��i khi thêm sản phẩm vào database!";
+    //         print_r($products);
+    //     }
     // }
 
     public function viewEdit($id)

@@ -16,6 +16,7 @@ return [
         'controller' => 'AdminUsersController',
         'method' => 'users',
     ],
+
     //action product
     'add-product'=>[
         'controller' => 'AdminProductsController',
@@ -29,15 +30,27 @@ return [
         'controller' => 'AdminProductsController',
         'method' => 'viewEdit',
     ],
+
     //action category
     'add-category'=>[
         'controller'=>'AdminCategoriesController',
-        'method'=>'view',
+        'method'=>'viewAdd',
     ],
     'action-add-category'=>[
         'controller'=>'AdminCategoriesController',
         'method'=>'add',
     ],
+    'edit-category/:id'=>[
+        'controller'=>'AdminCategoriesController',
+        'method'=>'viewEdit',
+    ],
+
+
+    'action-delete-category/:id'=>[
+        'controller'=>'AdminCategoriesController',
+        'method'=>'delete',
+    ],
+
     //action user
     'logout'=>[
         'controller'=>'AdminUsersController',

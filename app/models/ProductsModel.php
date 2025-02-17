@@ -99,13 +99,12 @@ class ProductsModel extends Connect{
     //     try {
     //         $sql = "INSERT INTO Products (name, price, salePrice, discription, image, listImages, condition, quantity, status, idCategory) VALUES (?,?,?,?,?,?,?,?,?,?)";
     //         $param = [$this->name, $this->price, $this->salePrice, $this->discription, $this->image, $this->listImages, $this->condition, $this->quantity, $this->status, $this->idCategory];
+    //         // var_dump($sql);
     //         $result = $this->exec($sql, $param);
     //         return $result;
     //     } catch (Exception $e) {
     //         return $e->getMessage();
     //     }
-       
-
     // }
     
 

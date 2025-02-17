@@ -10,7 +10,7 @@ class AdminCategoriesController
         $pageView->category($categories);
     }
 
-    public function view()
+    public function viewAdd()
     {
         $pageView = new AdminPageView();
         $pageView->addCategory();
@@ -41,7 +41,21 @@ class AdminCategoriesController
             echo "Lỗi khi thêm danh mục vào database!";
         }
 
+    }
 
+    public function viewEdit($id){
+        $categories = new CategoriesModel();
+        $categories = $categories->getOneCategory($id);
+        
+        $pageView = new AdminPageView();
+        $pageView->viewEditCategory($categories);
+    }
+
+    public function delete($id){
+        $category = new CategoriesModel();
+        if ($category->delete($id)) {
+            echo "<script>alert('Xóa danh mục thành công!'); window.location.href='/gameconsole/admin/categories';</script>";
+        }
     }
 
 

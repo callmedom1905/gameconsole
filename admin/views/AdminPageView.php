@@ -22,9 +22,15 @@ class AdminPageView{
     public function category($categories){
         include 'categories.php';
     }
+    
     public function addCategory(){
         include 'categoryAdd.php';
     }
+
+    public function viewEditCategory($category){
+        include 'categoryEdit.php';
+    }
+
 
     //user
     public function users($users){

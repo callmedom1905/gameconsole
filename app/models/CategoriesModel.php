@@ -33,12 +33,36 @@ class CategoriesModel extends Connect{
         return $categories;
     }
 
+    public function getOneCategory($id){
+        try {
+            $sql = "SELECT * FROM Categories WHERE idCategory = $id";
+            $result = $this->getInstance($sql);
+           if($result){
+                $category = new CategoriesModel($result['idCategory'], $result['type'], $result['name'], 
+                                            $result['status'], $result['createdAt'], $result['url'] );
+                return $category;
+            }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
     public function insert(){
         try {
             $sql = "INSERT INTO Categories (name,status,type,url) VALUES (?, ?, ?, ?)";
             $param = [$this->name, $this->status, $this->type, $this->url];
             var_dump($sql);
             $result = $this->exec($sql, $param);
+            return $result;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function delete($id){
+        try {
+            $sql = "DELETE FROM Categories WHERE idCategory = $id";
+            $result = $this->exec($sql);
             return $result;
         } catch (Exception $e) {
             return $e->getMessage();

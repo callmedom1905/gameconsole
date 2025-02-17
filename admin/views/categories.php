@@ -73,7 +73,7 @@
                             }
                             ?></td>
                             <td><?=$item->getUrl()?></td>
-                            <td><a href="">Sửa</a></td>
+                            <td><a href="/gameconsole/admin/edit-category/<?=$item->getId()?>">Sửa</a></td>
 
                         </tr>
                     <?php } ?>
