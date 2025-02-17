@@ -40,11 +40,11 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div> 
                     </div> -->
-            <a href="/gameconsole/admin/categories" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Danh
+            <a href="/gameconsole/admin/categories" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Danh
                 mục</a>
             <a href="/gameconsole/admin/products" class="nav-item nav-link    "><i class="fa fa-th me-2"></i>Sản
                 phẩm</a>
-            <a href="/gameconsole/admin/users" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Người dùng</a>
+            <a href="/gameconsole/admin/users" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Người dùng</a>
             <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a> -->
             <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -64,31 +64,23 @@
 
 <div class="col-12">
     <div class="bg-light rounded h-100 p-4">
-        <h6 class="mb-4">Sửa danh mục</h6>
+        <h6 class="mb-4">Sửa người dùng</h6>
         <a class="btn btn-secondary rounded-pill m-2" href="/gameconsole/admin/categories">Trở lại</a>
             <form action="" method="post" enctype="multipart/form-data">  
 
-                <input class="form-control mb-3" type="text" name="name" placeholder="<?=$category->getName()?>" aria-label="default input example">
+                <input class="form-control mb-3" type="text" name="name" placeholder="<?=$user->getEmail()?>" aria-label="default input example" readonly>
 
                 <select class="form-select mb-3" name="status" aria-label="Default select example">
                     <?php
-                    if($category->getStatus() == 1){
+                    if($user->getRole() == 0){
                         echo '
-                        <option selected value="1">Hoạt động</option>
-                        <option value="2">Tạm ngưng</option>
-                        <option value="3">Huỷ</option>
+                        <option selected value="0">Người dùng</option>
+                        <option value="1">Quản trị</option>
                         ';
-                    }else if($category->getStatus() == 2){
+                    }else {
                         echo '
-                        <option value="1">Hoạt động</option>
-                        <option selected value="2">Tạm ngưng</option>
-                        <option value="3">Huỷ</option>
-                        ';
-                    }else{
-                        echo '
-                        <option value="1">Hoạt động</option>
-                        <option value="2">Tạm ngưng</option>
-                        <option selected value="3">Huỷ</option>
+                        <option  value="0">Người dùng</option>
+                        <option selected value="1">Quản trị</option>
                         ';
                     }
                     ?>
@@ -97,27 +89,29 @@
 
                 <select class="form-select mb-3" name="type" aria-label="Default select example">
                     <?php
-                    if($category->getType() == 0){
+                    if($user->getActive() == 0){
                         echo '
-                        <option selected value="0">Nitendo</option>
-                        <option value="1">PlayStation</option>
+                        <option selected value="0">Chưa kích hoạt</option>
+                        <option value="1">Đã kích hoạt</option>
+                        <option value="2">Đã khóa</option>
+                        ';
+                    }else if($user->getActive() == 1){
+                        echo '
+                        <option value="0">Chưa kích hoạt</option>
+                        <option selected value="1">Đã kích hoạt</option>
+                        <option value="2">Đã khóa</option>
                         ';
                     }else{
                         echo '
-                        <option value="0">Nitendo</option>
-                        <option selected value="1">PlayStation</option>
+                        <option value="0">Chưa kích hoạt</option>
+                        <option value="1">Đã kích hoạt</option>
+                        <option selected value="2">Đã khóa</option>
                         ';
                     }
                     ?>
                 </select>
-
-                <input class="form-control mb-3" type="text" name="url" placeholder="<?=$category->getUrl()?>" aria-label="default input example">
-
-
-                <button type="submit" class="btn btn-success m-2">Sửa danh mục</button>
-
+                <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
             </form>
-            <a href="/gameconsole/admin/action-delete-category/<?=$category->getID()?>" class="btn btn-danger m-2">Xoá danh mục</a>
     </div>
 </div>
 </div>

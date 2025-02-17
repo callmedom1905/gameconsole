@@ -15,7 +15,6 @@ class AdminPageView{
     }
     public function viewEditPro($product){
         include 'productEdit.php';
-        // include 'edit.php';
     }
 
     //category
@@ -35,6 +34,9 @@ class AdminPageView{
     //user
     public function users($users){
         include 'users.php';
+    }
+    public function viewEditUser($user){
+        include 'userEdit.php';
     }
 
     

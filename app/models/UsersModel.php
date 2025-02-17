@@ -31,6 +31,20 @@ class UsersModel extends Connect{
         return $users;
     }
 
+    public function getOneUser($id){
+        try {
+            $sql = "SELECT * FROM Users WHERE idUser = $id";
+            $result = $this->getInstance($sql);
+            if($result){
+                $user = new UsersModel($result['idUser'], $result['email'], $result['password'], $result['role'], $result['active']);
+                return $user;
+            }
+        } catch (Exception $e) {
+            error_log("Lỗi khi lấy dữ liệu: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function insert(){
         try{
             $sql = "INSERT INTO Users (email, password) VALUES (?,?)";

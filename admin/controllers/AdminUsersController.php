@@ -13,4 +13,12 @@ class AdminUsersController{
         header("Location: /gameconsole/");
         exit();
     }
+
+    public function viewEdit($id){
+        $user = new UsersModel();
+        $user = $user->getOneUser($id);
+
+        $pageView = new AdminPageView();
+        $pageView->viewEditUser($user);
+    }
 }

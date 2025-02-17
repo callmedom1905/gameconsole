@@ -80,7 +80,7 @@
                                 }
                                 ?>
                             </td>
-                            <td><a href="">Sửa</a></td>
+                            <td><a href="/gameconsole/admin/edit-user/<?=$item->getId()?>">Sửa</a></td>
 
                         </tr>
                     <?php } ?>

@@ -52,10 +52,15 @@ return [
     ],
 
     //action user
+    'edit-user/:id'=>[
+        'controller'=>'AdminUsersController',
+        'method'=>'viewEdit',
+    ],
     'logout'=>[
         'controller'=>'AdminUsersController',
         'method'=>'logout',
-    ]
+    ],
+
 
     
    
