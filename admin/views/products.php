@@ -69,7 +69,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($products as $item) {
+                    <?php 
+                    foreach ($products as $item) {
                         ?>
                         <tr>
                             <th scope="row"><?= $item->getId() ?></th>
@@ -97,7 +98,7 @@
                             <td><?= $item->getView() ?></td>
                             <td>
                                 <!-- in tên danh mục theo id category -->
-                                <?= $item->getName() ?>
+                                <?= $item->getCateName() ?>
                             </td>
                             <td><a href="/gameconsole/admin/action-edit-product/<?=$item->getId()?>">Sửa</a></td>
 

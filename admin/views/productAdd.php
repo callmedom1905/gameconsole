@@ -56,15 +56,15 @@
                 <input class="form-control mb-3" type="text" name="discription" placeholder="Mô tả" aria-label="default input example">
 
                 <div class="mb-3">
-                    <!-- <label for="formFile" class="form-label">Hình chính</label>
-                    <input class="form-control" type="file" name="image" id="formFile"> -->
-                    <input class="form-control" type="text" name="image" id="formFile">
+                    <label for="formFile" class="form-label">Hình chính</label>
+                    <input class="form-control" type="file" name="image" id="formFile">
+                    <!-- <input class="form-control" type="text" name="image" id="formFile"> -->
                 </div>
 
                 <div class="mb-3">
-                    <!-- <label for="formFileMultiple" class="form-label">Danh sách hình ảnh</label>
-                    <input class="form-control" type="file" name="listImages" id="formFileMultiple" multiple=""> -->
-                    <input class="form-control" type="text" name="listImages" id="formFile">
+                    <label for="formFileMultiple" class="form-label">Danh sách hình ảnh</label>
+                    <input class="form-control" type="file" name="listImages[]" id="formFileMultiple" multiple="">
+                    <!-- <input class="form-control" type="text" name="listImages" id="formFile"> -->
 
                 </div>
 

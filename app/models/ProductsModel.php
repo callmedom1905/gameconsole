@@ -14,11 +14,12 @@ class ProductsModel extends Connect{
     private $createdAt;
     private $updatedAt;
     private $idCategory;
+    private $cate_name;
     
     
     public function __construct(){
         parent::__construct();
-        if(func_num_args() >= 13){
+        if(func_num_args() >= 15){
             $this->idProduct = func_get_arg(0);
             $this->name = func_get_arg(1);
             $this->price = func_get_arg(2);
@@ -33,20 +34,21 @@ class ProductsModel extends Connect{
             $this->createdAt = func_get_arg(11);
             $this->updatedAt = func_get_arg(12);
             $this->idCategory = func_get_arg(13);
+            $this->cate_name = func_get_arg(14);
         }
 
     }
 
     public function getAllProducts(){
         // $sql = "SELECT * FROM Products";
-        $sql = "SELECT Products.* , Categories.name FROM Products JOIN Categories ON Products.idCategory = Categories.idCategory";
+        $sql = "SELECT Products.* , Categories.name as cate_name FROM Products JOIN Categories ON Products.idCategory = Categories.idCategory ORDER BY Products.idProduct";
         $result = $this->getList($sql);
         $products = [];
         if($result){
             foreach($result as $row){
                 $product = new ProductsModel($row['idProduct'], $row['name'], $row['price'], $row['salePrice'],
                                             $row['discription'], $row['image'], $row['listImages'], 
-                                            $row['condition'], $row['quantity'], $row['status'], $row['view'], $row['createdAt'], $row['updatedAt'], $row['idCategory']);
+                                            $row['condition'], $row['quantity'], $row['status'], $row['view'], $row['createdAt'], $row['updatedAt'], $row['idCategory'], $row['cate_name']);
                 array_push($products, $product);
             }
         }
@@ -95,17 +97,17 @@ class ProductsModel extends Connect{
         return $proNew;
     }
 
-    // public function insert(){
-    //     try {
-    //         $sql = "INSERT INTO Products (name, price, salePrice, discription, image, listImages, condition, quantity, status, idCategory) VALUES (?,?,?,?,?,?,?,?,?,?)";
-    //         $param = [$this->name, $this->price, $this->salePrice, $this->discription, $this->image, $this->listImages, $this->condition, $this->quantity, $this->status, $this->idCategory];
-    //         // var_dump($sql);
-    //         $result = $this->exec($sql, $param);
-    //         return $result;
-    //     } catch (Exception $e) {
-    //         return $e->getMessage();
-    //     }
-    // }
+    public function insert(){
+        try {
+            $sql = "INSERT INTO Products (name, price, salePrice, discription, image, listImages, `condition`, quantity, status, idCategory)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $param = [$this->name, $this->price, $this->salePrice, $this->discription, $this->image, $this->listImages, $this->condition, $this->quantity, $this->status, $this->idCategory];
+            $result = $this->exec($sql, $param);
+            return $result;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
     
 
     public function update(){
@@ -221,6 +223,14 @@ class ProductsModel extends Connect{
     }
     public function setIdCategory($idCategory){
         $this->idCategory = $idCategory;
+    }
+    //cate_name
+    public function getCateName(){
+        return $this->cate_name;
+    }
+
+    public function setCateName($cate_name){
+        $this->cate_name = $cate_name;
     }
 
 }
