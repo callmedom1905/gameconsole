@@ -6,9 +6,12 @@ class AdminProductsController
     {
         $products = new ProductsModel();
         $products = $products->getAllProducts();
+
+        $category = new CategoriesModel();
+        $category = $category->getAllCategories();
         //hiện
         $pageView = new AdminPageView();
-        $pageView->product($products);
+        $pageView->product($products, $category);
 
     }
 

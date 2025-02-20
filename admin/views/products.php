@@ -95,11 +95,27 @@
                             </td>
                             <td><?= $item->getCondition() ?></td>
                             <td><?= $item->getQuantity() ?></td>
-                            <td><?= $item->getStatus() ?></td>
+                            <td><?php
+                             if($item->getStatus() == 1){
+                                echo "Hoạt động";
+                             }else if($item->getStatus() == 1){
+                                echo "Tạm ngưng";
+                            }else{
+                                echo "Huỷ";
+                             }
+                            
+                             ?></td>
                             <td><?= $item->getView() ?></td>
                             <td>
                                 <!-- in tên danh mục theo id category -->
-                                <?= $item->getCateName() ?>
+                                <?php
+                                foreach ($category as $cate){
+                                    if($item->getIdCategory() == $cate->getId()){
+                                        echo $cate->getName();
+                                    }
+                                }
+                                
+                                 ?>
                             </td>
                             <td><a href="/gameconsole/admin/action-edit-product/<?=$item->getId()?>">Sửa</a></td>
 

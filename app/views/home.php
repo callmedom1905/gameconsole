@@ -206,6 +206,7 @@
                 </div>
                 <div class="row g-4">
                     <?php
+                    // print_r($proHot);
                     foreach($proHot as $item){
 
                     

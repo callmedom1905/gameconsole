@@ -4,7 +4,7 @@ class AdminPageView{
         include 'dashboard.php';
     }
     //product 
-    public function product($products){
+    public function product($products, $category){
         include 'products.php';
     }
     public function addProduct(){
