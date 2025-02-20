@@ -8,6 +8,12 @@
 RewriteEngine On
 RewriteBase /gameconsole/admin/
 
+#chặn người dùng truy cập qua link trang web
+RewriteRule ^controllers/ - [F]
+RewriteRule ^views/ - [F]
+
+
+
 # Chuyển hướng tất cả yêu cầu không phải file hoặc thư mục tới index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

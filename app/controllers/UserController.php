@@ -20,19 +20,6 @@ class UserController
             exit();
         }
 
-        // foreach($user->getAllUsers() as $item){
-        //     if($item->getEmail() == $_POST['email'] && $item->getPassword() == $_POST['password'] && $item->getRole() == 1){
-        //         // header("Location: /gameconsole/admin");
-        //         echo "<script>alert('Chào mừng bạn đến với trang quản trị'); window.location.href='/gameconsole/admin';</script>";
-        //         exit();
-        //     }else if($item->getEmail() == $_POST['email'] && $item->getPassword() == $_POST['password'] && $item->getRole() == 0){
-        //         $_SESSION['user'] = $item->getEmail();
-        //         // header("Location: /gameconsole/");
-        //         echo "<script>alert('Chào mừng bạn đến với Gameconsole'); window.location.href='/gameconsole/';</script>";
-        //     }else{
-        //         $errors[] = "Tài khoản hoặc mật khẩu không chính xác.";
-        //     }
-        // }
         $check = $user->getUserByEmail($_POST['email']);
 
         if (!$check) {
@@ -58,11 +45,17 @@ class UserController
     
         // Đăng nhập thành công, kiểm tra quyền
         if ($check->getRole() == 1) {
-            echo "<script>alert('Chào mừng bạn đến với trang quản trị'); window.location.href='/gameconsole/admin';</script>";
+            $_SESSION['role'] = $check->getRole();
+            header('Location: /gameconosole/admin');
+            // echo "<script>alert('Chào mừng bạn đến với trang quản trị'); window.location.href='/gameconsole/admin';</script>";
             exit();
         } else {
             $_SESSION['user'] = $check->getEmail();
-            echo "<script>alert('Chào mừng bạn đến với Gameconsole'); window.location.href='/gameconsole/';</script>";
+            $_SESSION['role'] = $check->getRole();
+            header('Location: /gameconsole/');
+
+            // echo "<script>alert('Chào mừng bạn đến với Gameconsole'); window.location.href='/gameconsole/';</script>";x
+
             exit();
         }
     }

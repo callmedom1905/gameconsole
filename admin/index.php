@@ -1,3 +1,13 @@
+<?php
+session_start();
+ob_start();
+if (!isset($_SESSION['user']) || $_SESSION['role'] != 1) {
+    // Nếu người dùng không đăng nhập hoặc không phải là admin, chuyển hướng đến trang đăng nhập
+    header('Location: /gameconsole/signIn');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

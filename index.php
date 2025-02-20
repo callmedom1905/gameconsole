@@ -1,3 +1,9 @@
+<?php 
+session_start();
+ob_start();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -204,5 +210,4 @@
 <!-- Template Javascript -->
 <script src="/gameconsole/public/js/main.js"></script>
 </body>
-
 </html>

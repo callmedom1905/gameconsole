@@ -141,6 +141,8 @@
 
             </select>
             <button type="submit" class="btn btn-success m-2">Sửa sản phẩm</button>
+            <a href="/gameconsole/admin/action-delete-product/<?=$product->getID()?>" class="btn btn-danger m-2">Xoá sản phẩm</a>
+
 
         </form>
 

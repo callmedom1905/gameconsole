@@ -70,10 +70,11 @@
                 </thead>
                 <tbody>
                     <?php 
+                    $count = 1;
                     foreach ($products as $item) {
                         ?>
                         <tr>
-                            <th scope="row"><?= $item->getId() ?></th>
+                            <th scope="row"><?=$count++ ?></th>
                             <td><?= $item->getName() ?></td>
                             <td><?= number_format($item->getPrice()) ?></td>
                             <td><?= $item->getSalePrice() ?></td>

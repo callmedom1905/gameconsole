@@ -26,8 +26,6 @@ class AdminProductsController
         $data = [
             'name' => 'setName',
             'price' => 'setPrice',
-            // 'salePrice' => 'setSalePrice',
-            // 'discription' => 'setDiscription',
             'condition' => 'setCondition',
             'quantity' => 'setQuantity',
             'status' => 'setStatus',
@@ -85,7 +83,7 @@ class AdminProductsController
         if ($product->insert()) {
             echo "<script>alert('Thêm sản phẩm thành công!'); window.location.href='/gameconsole/admin/products';</script>";
         } else {
-            echo 'lỗi';
+            echo '<strong>check lỗi khi thiếu dữ liệu đầu vào, làm thêm</strong>';
         }
     }
 

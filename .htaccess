@@ -8,6 +8,11 @@
 RewriteEngine On
 RewriteBase /gameconsole/
 
+#chặn người dùng truy cập qua link trang web
+RewriteRule ^app/ - [F] 
+
+
+
 # Chuyển hướng tất cả yêu cầu không phải file hoặc thư mục tới index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
