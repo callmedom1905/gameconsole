@@ -45,18 +45,18 @@ class UserController
     
         // Đăng nhập thành công, kiểm tra quyền
         if ($check->getRole() == 1) {
+            $_SESSION['user'] = $check->getEmail();
             $_SESSION['role'] = $check->getRole();
-            header('Location: /gameconosole/admin');
-            // echo "<script>alert('Chào mừng bạn đến với trang quản trị'); window.location.href='/gameconsole/admin';</script>";
-            exit();
+            echo "<script>alert('Chào mừng bạn đến với trang quản trị'); window.location.href='/gameconsole/admin';</script>";
+            // exit();
         } else {
             $_SESSION['user'] = $check->getEmail();
             $_SESSION['role'] = $check->getRole();
-            header('Location: /gameconsole/');
+            echo "<script>alert('Chào mừng bạn đến với Gameconsole'); window.location.href='/gameconsole/';</script>";
+            // echo "<script>alert('Chào mừng bạn đến với trang quản trị".$_SESSION['role']."'); window.location.href='/gameconsole/';</script>";
 
-            // echo "<script>alert('Chào mừng bạn đến với Gameconsole'); window.location.href='/gameconsole/';</script>";x
 
-            exit();
+            // exit();
         }
     }
 

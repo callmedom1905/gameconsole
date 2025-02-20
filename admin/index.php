@@ -1,8 +1,8 @@
 <?php
 session_start();
 ob_start();
-if (!isset($_SESSION['user']) || $_SESSION['role'] != 1) {
-    // Nếu người dùng không đăng nhập hoặc không phải là admin, chuyển hướng đến trang đăng nhập
+
+if(!isset($_SESSION['user']) || $_SESSION['role'] != 1){
     header('Location: /gameconsole/signIn');
     exit();
 }
@@ -103,7 +103,7 @@ if (!isset($_SESSION['user']) || $_SESSION['role'] != 1) {
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <!-- <img class="rounded-circle me-lg-2" src="../admin/public/img/logo.png" alt="" style="width: 40px; height: 40px;"> -->
-                            <span class="d-none d-lg-inline-flex">Admin</span>
+                            <span class="d-none d-lg-inline-flex"><?=$_SESSION['user']?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <!-- <a href="#" class="dropdown-item">My Profile</a> -->

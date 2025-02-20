@@ -1,6 +1,5 @@
 <?php
-session_start();
-ob_start();
+
 //models
 require_once '../app/models/connect.php';
 require_once '../app/models/ProductsModel.php';
