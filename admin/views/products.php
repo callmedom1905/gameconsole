@@ -117,7 +117,7 @@
                                 
                                  ?>
                             </td>
-                            <td><a href="/gameconsole/admin/action-edit-product/<?=$item->getId()?>">Sửa</a></td>
+                            <td><a href="/gameconsole/admin/edit-product/<?=$item->getId()?>">Sửa</a></td>
 
                         </tr>
                     <?php } ?>

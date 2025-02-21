@@ -162,6 +162,34 @@ class ProductsModel extends Connect
         return $proNew;
     }
 
+    public function getProSale(){
+        $sql = "SELECT * FROM Products WHERE salePrice IS NOT NULL";
+        $result = $this->getList($sql);
+        $proSale = [];
+        if ($result) {
+            foreach ($result as $row) {
+                $product = new ProductsModel(
+                    $row['idProduct'],
+                    $row['name'],
+                    $row['price'],
+                    $row['salePrice'],
+                    $row['discription'],
+                    $row['image'],
+                    $row['listImages'],
+                    $row['condition'],
+                    $row['quantity'],
+                    $row['status'],
+                    $row['view'],
+                    $row['createdAt'],
+                    $row['updatedAt'],
+                    $row['idCategory']
+                );
+                array_push($proSale, $product);
+            }
+        }
+        return $proSale;
+    }
+
     public function insert()
     {
         try {
@@ -176,11 +204,13 @@ class ProductsModel extends Connect
     }
 
 
-    public function update()
+    public function update($id)
     {
         try {
-            $sql = "UPDATE Products SET name = ?, price = ?, discription = ?, image = ?, listImages = ?, condition = ?, quantity = ?, status = ?, view = ?, idCategory = ?";
-            $param = [$this->name, $this->price, $this->discription, $this->image, $this->listImages, $this->condition, $this->quantity, $this->status, $this->view, $this->idCategory];
+            // $sql = "UPDATE Products SET name = '$this->name', price = $this->price,salePrice = $this->salePrice, discription = '$this->discription', image = '$this->image', listImages = '$this->, condition = ?, quantity = ?, status = ?,idCategory = ? WHERE idProduct = $id";
+
+            $sql = "UPDATE Products SET name = ?, price = ?,salePrice = ?, discription = ?, image = ?, listImages = ?, `condition` = ?, quantity = ?, status = ?,idCategory = ? WHERE idProduct = $id";
+            $param = [$this->name, $this->price,$this->salePrice, $this->discription, $this->image, $this->listImages, $this->condition, $this->quantity, $this->status, $this->idCategory];
             $result = $this->exec($sql, $param);
             if ($result) {
                 return true;

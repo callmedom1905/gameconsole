@@ -109,7 +109,15 @@
                                                         <h4><?php echo $item->getName() ?></h4>
                                                     </a>
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
-                                                        <p class="text-dark fs-5 fw-bold mb-0"><?php echo number_format($item->getPrice())  ?> VND</p>
+                                                        <p class="text-dark fs-5 fw-bold mb-0">
+                                                            <?php 
+                                                            if($item->getSalePrice() != null){
+                                                                echo number_format($item->getSalePrice());
+                                                            }else{
+                                                                echo number_format($item->getPrice());
+                                                            }
+                                                            ?> VND
+                                                    </p>
                                                         <a href="" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng</a>
                                                     </div>
                                                 </div>
@@ -228,7 +236,16 @@
                                         <i class="fas fa-star text-primary"></i>
                                         <i class="fas fa-star"></i>
                                     </div> -->
-                                    <h4 class="mb-3"><?php echo number_format($item->getPrice()) ?> VND</h4>
+                                    <h4 class="mb-3">
+                                          <?php 
+                                          if($item->getSalePrice() != null){
+                                              echo number_format($item->getSalePrice());
+                                          }else{
+                                              echo number_format($item->getPrice());
+                                          }
+                                         ?>
+                                         VND
+                                    </h4>
                                     <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>Thêm giỏ hàng</a>
                                 </div>
                             </div>

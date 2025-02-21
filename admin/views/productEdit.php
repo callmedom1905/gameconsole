@@ -65,33 +65,36 @@
     <div class="bg-light rounded h-100 p-4">
         <h6 class="mb-4">Sửa sản phẩm</h6>
         <a class="btn btn-secondary rounded-pill m-2" href="/gameconsole/admin/products">Trở lại</a>
-        <form action="/gameconsole/admin/action-add-pro" method="post" enctype="multipart/form-data">
+        <form action="/gameconsole/admin/action-edit-product/<?=$product->getId()?>" method="post" enctype="multipart/form-data">
 
-            <input class="form-control mb-3" type="text" name="name" placeholder="<?= $product->getName() ?>" aria-label="default input example">
-            <input class="form-control mb-3" type="text" name="price" placeholder="<?= $product->getPrice() ?>" aria-label="default input example">
-            <input class="form-control mb-3" type="text" name="salePrice" placeholder="<?= $product->getSalePrice() ?>" aria-label="default input example">
-            <input class="form-control mb-3" type="text" name="discription" placeholder="<?= $product->getDiscription() ?>" aria-label="default input example">
+            <input class="form-control mb-3" type="text" name="name" value="<?= $product->getName() ?>" aria-label="default input example">
+            <input class="form-control mb-3" type="text" name="price" value="<?= $product->getPrice() ?>" aria-label="default input example">
+            <input class="form-control mb-3" type="text" name="salePrice" value="<?= $product->getSalePrice() ?>" aria-label="default input example">
+            <input class="form-control mb-3" type="text" name="discription" value="<?= $product->getDiscription() ?>" aria-label="default input example">
 
             <div class="mb-3">
-                <label for="formFile" class="form-label">Hình chính</label>
-                <img src="../public/img/<?= $product->getImage() ?>" alt="">
+                <!-- <label for="formFile" class="form-label">Hình chính</label> -->
+                <img src="../../../gameconsole/public/img/<?= $product->getImage() ?>" alt="" width="100px">
+                <input type="hidden" value="<?= $product->getImage() ?>" name="old_image">
                 <input class="form-control" type="file" name="image" id="formFile">
             </div>
 
             <div class="mb-3">
-                <label for="formFileMultiple" class="form-label">Danh sách hình ảnh</label>
                 <?php
                 $images = $product->getListImages();
                 if (!empty($images)) {
                     $image = explode(",", $images);
                 } else {
+                    echo '<label for="formFileMultiple" class="form-label">Danh sách hình ảnh</label>';
                     $image = [];
                 }
+
                 foreach ($image as $img) {
                     ?>
-                    <img src="../public/img/<?= trim($img) ?>" width="100px">
+                    <img src="../../../gameconsole/public/img/<?= trim($img) ?>" width="100px">
                 <?php } ?>
-                <input class="form-control" type="file" name="listImages" id="formFileMultiple" multiple="">
+                <input type="hidden" value="<?= $product->getListImages() ?>" name="listImages">
+                <input class="form-control" type="file" value="" name="listImages" id="formFileMultiple" multiple="">
             </div>
 
             <!-- <label for="">Tình trạng</label> -->
@@ -113,7 +116,7 @@
                 ?>
             </select>
 
-            <input class="form-control mb-3" type="text" name="quantity" placeholder="<?=$product->getQuantity()?>" aria-label="default input example">
+            <input class="form-control mb-3" type="text" name="quantity" value="<?=$product->getQuantity()?>" aria-label="default input example">
 
             <!-- <label for="">Trạng thái</label> -->
             <select class="form-select mb-3" name="status" aria-label="Default select example">
@@ -135,11 +138,23 @@
             </select>
 
             <!-- đổ danh mục từ db -->
-            <!-- <label for="">Danh mục</label> -->
-            <select class="form-select mb-3" name="idCategory" aria-label="Default select example">
-                <option value="id">Dữ liệu từ db</option>
 
-            </select>
+            <label for="">Danh mục</label>
+                <select class="form-select mb-3" name="idCategory" aria-label="Default select example">
+                    <?php 
+                    foreach ($category as $item) {
+                        if($product->getIdCategory() == $item->getId()){
+                            echo "<option value='".$item->getId()."'>".$item->getName()."</option>";
+                        }else{
+                            echo "<option value='".$item->getId()."'>".$item->getName()."</option>";
+
+                        }
+  
+                    }
+
+                    ?>
+                   
+                </select>
             <button type="submit" class="btn btn-success m-2">Sửa sản phẩm</button>
             <a href="/gameconsole/admin/action-delete-product/<?=$product->getID()?>" class="btn btn-danger m-2">Xoá sản phẩm</a>
 

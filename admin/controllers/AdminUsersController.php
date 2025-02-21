@@ -30,11 +30,11 @@ class AdminUsersController{
         // echo $_POST['active'];
         $result = $user->update($id);
         var_dump($result);
-        // if($result){
-        //     echo "<script>alert('Cập nhật thành công!'); window.location.href='/gameconsole/admin/users';</script>";
-        // }else{
-        //     echo "<script>alert('Cập nhật thất bại!'); window.location.href='/gameconsole/admin/edit-user/".$id."';</script>";
-        // }
+        if($result){
+            echo "<script>alert('Cập nhật thành công!'); window.location.href='/gameconsole/admin/users';</script>";
+        }else{
+            echo "<script>alert('Cập nhật thất bại!'); window.location.href='/gameconsole/admin/edit-user/".$id."';</script>";
+        }
         
     }
 }

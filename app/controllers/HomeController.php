@@ -45,13 +45,21 @@ class HomeController{
         $this->pageView->cart();
     }
 
-    // public function products(){
-    //     // lấy tất cả sản phẩm
-    //     //tạo mảng sản phẩm
-    //     $product = new ProductsModel();
-    //     $products = $product->getAllProducts();
-    //     // hiển thị danh sách sản phẩm
-    //     $productView = new PageView();
-    //     $productView->showList($products);
-    // }
+    public function products(){
+        // lấy tất cả sản phẩm
+        $product = new ProductsModel();
+        $products = $product->getAllProducts();
+
+        //lấy sp hot
+        $proSale = new ProductsModel();
+        $proSale = $proSale->getProSale();
+        
+        //lấy danh mục
+        $categories = new CategoriesModel();
+        $categories = $categories->getAllCategories();
+        
+        // hiển thị danh sách sản phẩm
+        $productView = new PageView();
+        $productView->showListPro($products, $categories, $proSale);
+    }
 }

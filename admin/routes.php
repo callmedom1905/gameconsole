@@ -26,9 +26,17 @@ return [
         'controller' => 'AdminProductsController',
         'method' => 'add',
     ],
-    'action-edit-product/:id'=>[
+    'edit-product/:id'=>[
         'controller' => 'AdminProductsController',
         'method' => 'viewEdit',
+    ],
+    'action-edit-product/:id'=>[
+        'controller' => 'AdminProductsController',
+        'method' => 'edit',
+    ],
+    'action-delete-product/:id'=>[
+        'controller' => 'AdminProductsController',
+        'method' => 'delete',
     ],
 
     //action category

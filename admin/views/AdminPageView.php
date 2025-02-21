@@ -13,7 +13,7 @@ class AdminPageView{
 
         include 'productAdd.php';
     }
-    public function viewEditPro($product){
+    public function viewEditPro($product, $category){
         include 'productEdit.php';
     }
 

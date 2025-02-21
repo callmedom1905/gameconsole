@@ -20,6 +20,10 @@ return [
         'controller' => 'HomeController',
         'method' => 'cart',
     ],
+    'products'=>[
+        'controller' => 'HomeController',
+        'method' => 'products',
+    ],
 
     //Product
     'detail/:id' => [
